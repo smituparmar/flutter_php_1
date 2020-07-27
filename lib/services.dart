@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'employee.dart';
 
 class Services {
-  static const ROOT = "http://localhost/Employees/employee_action.php";
+  static const ROOT = "https://tryoneandone.000webhostapp.com/index.php";
   static const CREATE_TABLE_ACTION = 'CREATE_TABLE';
   static const _GET_ALL_ACTION = 'GET_ALL';
   static const _ADD_EMP_ACTION = 'ADD_EMP';
@@ -16,11 +16,12 @@ class Services {
       //add the parameters to pass the request
       var map = Map<String, dynamic>();
       map['action'] = CREATE_TABLE_ACTION;
+      print('map action $map');
       final response = await http.post(ROOT, body: map);
       print('create table response: ${response.body}');
       return response.body;
     } catch (e) {
-      return 'error';
+      return 'error1';
     }
   }
 
@@ -29,14 +30,17 @@ class Services {
       var map = Map<String, dynamic>();
       map['action'] = _GET_ALL_ACTION;
       final response = await http.post(ROOT, body: map);
-      print('create table response: ${response.body}');
+      print(response.statusCode);
+      print('getting table response: ${response.body}');
       if (response.statusCode == 200) {
         List<Employee> list = parseResponse(response.body);
+        print('list $list');
         return list;
       } else {
         return List<Employee>();
       }
     } catch (e) {
+      print(e);
       return List<Employee>();
     }
   }
@@ -67,7 +71,7 @@ class Services {
 
   //method to update Employee
   static Future<String> updateEmployee(
-      int empID, String firstName, String lastName) async {
+      String empID, String firstName, String lastName) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _UPDATE_EMP_ACTION;
@@ -87,8 +91,7 @@ class Services {
   }
 
   //method to delete employee
-  static Future<String> deleteEmployee(
-      int empID, String firstName, String lastName) async {
+  static Future<String> deleteEmployee(String empID) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _DELETE_EMP_ACTION;
