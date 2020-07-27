@@ -183,7 +183,9 @@ class _DataTableDemoState extends State<DataTableDemo> {
           ),
           IconButton(
             icon: Icon(Icons.refresh),
-            onPressed: _getEmployees(),
+            onPressed: () {
+              _getEmployees();
+            },
           )
         ],
       ),
