@@ -1,16 +1,10 @@
 # employee_database_try
 
-A new Flutter project.
+This project is about how to link your php servr with flutter application
+I have implemented just basic crud operations for now(yaa..I know delete functionality is not working...shhh...)!
 
-## Getting Started
+# Setting up project
 
-This project is a starting point for a Flutter application.
+put employee_actions.php in server side and make changes according to your server
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+now in downloaded code make changes in url in services.dart
